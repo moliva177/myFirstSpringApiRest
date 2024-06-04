@@ -1,8 +1,7 @@
 package ar.edu.utn.frc.tup.lciii.Controllers;
 
-import ar.edu.utn.frc.tup.lciii.entities.PlayerEntity;
 import ar.edu.utn.frc.tup.lciii.models.Player;
-import ar.edu.utn.frc.tup.lciii.repositories.jpa.PlayerJpaRepository;
+import ar.edu.utn.frc.tup.lciii.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class PlayerController {
 
     @Autowired
-    private PlayerJpaRepository playerJpaRepository;
+    private PlayerService playerService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<PlayerEntity> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(playerJpaRepository.getReferenceById(id));
+    public ResponseEntity<Player> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(playerService.getPlayerById(id));
     }
 }
