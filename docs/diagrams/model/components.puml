@@ -1,6 +1,12 @@
 @startuml
 
-save - [PlayerJpaRepository]
-getById - [PlayerJpaRepository]
+database "players"
+[PlayerJpaRepository] -("players"
+getReferencedById - [PlayerJpaRepository]
+
+[PlayerService] -(getReferencedById
+getPlayerById - [PlayerService]
+
+[PlayerController] -(getPlayerById
 
 @enduml
