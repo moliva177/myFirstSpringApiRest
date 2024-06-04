@@ -1,12 +1,20 @@
 @startuml
 
+skinparam componentStyle uml1
+
 database "players"
+
+[PlayerController] --(getPlayerById
+[PlayerController] --(savePlayer
+
+[PlayerService] --(getReferencedById
+[PlayerService] --(save
+getPlayerById -- [PlayerService]
+savePlayer -- [PlayerService]
+
+
 [PlayerJpaRepository] -("players"
-getReferencedById - [PlayerJpaRepository]
-
-[PlayerService] -(getReferencedById
-getPlayerById - [PlayerService]
-
-[PlayerController] -(getPlayerById
+getReferencedById -- [PlayerJpaRepository]
+save -- [PlayerJpaRepository]
 
 @enduml
