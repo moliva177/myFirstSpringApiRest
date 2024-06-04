@@ -1,6 +1,8 @@
 package ar.edu.utn.frc.tup.lciii.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,8 +15,15 @@ import java.time.LocalDateTime;
 public class Player {
 
     private Long id;
+
+    @NotNull(message = "userName can't be NULL")
     private String userName;
+
+    @NotNull(message = "password can't be NULL")
     private String password;
+
+    @NotNull(message = "email can't be NULL")
+    @Email(message = "invalid email")
     private String email;
     private String avatar;
 
