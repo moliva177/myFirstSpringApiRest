@@ -17,20 +17,10 @@ public class PingController {
             description = "If the app is active response pong"
     )
     @ApiResponses(value = {
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "Succesful operation",
-                    content = @Content(
-                            schema = @Schema(implementation = String.class)
-                    )
-            ),
-            @ApiResponse(
-                    responseCode = "500",
-                    description = "Internal server error",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorApi.class)
-                    )
-            )
+            @ApiResponse(responseCode = "200", description = "Succesful operation", content =
+            @Content(schema = @Schema(implementation = String.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content =
+            @Content(schema = @Schema(implementation = ErrorApi.class)))
     })
     @GetMapping("/ping")
     public String ping() {

@@ -28,7 +28,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public Player login(CredentialV2 credential) {
-        return null;
+        return playerService.getPlayerByUserNameOrEmailAndPassword(credential.getIdentity(), credential.getPassword());
     }
 
     private Player loginWithIdentity(UserNameIdentity userNameIdentity, String password) {

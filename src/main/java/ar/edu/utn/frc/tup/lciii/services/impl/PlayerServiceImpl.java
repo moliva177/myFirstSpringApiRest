@@ -71,6 +71,12 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Player getPlayerByUserNameOrEmailAndPassword(String identity, String password) {
-        return null;
+        Optional<PlayerEntity> playerEntityOptional = playerJpaRepository.findByUserNameOrEmailAndPassword(identity, password);
+        if (playerEntityOptional.isPresent()){
+            return modelMapper.map(playerEntityOptional.get(), Player.class);
+        }
+        else {
+            throw new EntityNotFoundException("Some parameters are incorrect.");
+        }
     }
 }
