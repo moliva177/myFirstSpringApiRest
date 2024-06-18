@@ -136,3 +136,18 @@
 > Se utiliza en parámetros de métodos o argumentos de constructores para
 > activar la validación de datos según las anotaciones de validación de Spring, como
 > @NotNull, @Size, etc.
+
+
+# Spring Boot API - P11: Exception Handler
+
+## 1. Creo la clase ErrorApi dentro del paquete dtos.common
+
+## 2. Creo la clase ControllerExceptionHandler dentro del paquete controllers
+
+## Anotaciones:
+
+### @ControllerAdvice
+> Verifica la ejecución de los controladores
+
+### @ExceptionHandler
+> 
