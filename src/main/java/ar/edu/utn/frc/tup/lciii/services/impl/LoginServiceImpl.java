@@ -10,6 +10,8 @@ import ar.edu.utn.frc.tup.lciii.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class LoginServiceImpl implements LoginService {
 
@@ -28,14 +30,22 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public Player login(CredentialV2 credential) {
-        return playerService.getPlayerByUserNameOrEmailAndPassword(credential.getIdentity(), credential.getPassword());
+        Player player = playerService.getPlayerByUserNameOrEmailAndPassword(credential.getIdentity(), credential.getPassword());
+        return updateLastLogin(player);
     }
 
     private Player loginWithIdentity(UserNameIdentity userNameIdentity, String password) {
-        return playerService.getPlayerByUserNameAndPassword(userNameIdentity.getUserName(), password);
+        Player player = playerService.getPlayerByUserNameAndPassword(userNameIdentity.getUserName(), password);
+        return updateLastLogin(player);
     }
 
     private Player loginWithIdentity(EmailIdentity emailIdentity, String password) {
-        return playerService.getPlayerByEmailAndPassword(emailIdentity.getEmail(), password);
+        Player player = playerService.getPlayerByEmailAndPassword(emailIdentity.getEmail(), password);
+        return updateLastLogin(player);
+    }
+
+    private Player updateLastLogin(Player player) {
+        player.setLastLogin(LocalDateTime.now());
+        return playerService.savePlayer(player);
     }
 }
