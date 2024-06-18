@@ -150,4 +150,11 @@
 > Verifica la ejecución de los controladores
 
 ### @ExceptionHandler
-> 
+
+
+# Spring Boot API - P12: Custom Annotation
+
+## 1. Agrego el paquete utils.validations.password
+> Aquí dentro creo una interfaz de tipo annotation y su implementation con las validaciones necesarias.
+
+## 2. Agrego la anotación a la propiedad

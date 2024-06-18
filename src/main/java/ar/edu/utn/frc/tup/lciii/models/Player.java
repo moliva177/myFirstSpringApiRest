@@ -1,5 +1,6 @@
 package ar.edu.utn.frc.tup.lciii.models;
 
+import ar.edu.utn.frc.tup.lciii.utils.validations.password.ValidPassword;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -20,6 +21,7 @@ public class Player {
     private String userName;
 
     @NotNull(message = "password can't be NULL")
+    @ValidPassword
     private String password;
 
     @NotNull(message = "email can't be NULL")
