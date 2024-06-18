@@ -1,14 +1,17 @@
 package ar.edu.utn.frc.tup.lciii.services.impl;
 
 import ar.edu.utn.frc.tup.lciii.entities.PlayerEntity;
+import ar.edu.utn.frc.tup.lciii.models.Match;
 import ar.edu.utn.frc.tup.lciii.models.Player;
 import ar.edu.utn.frc.tup.lciii.repositories.jpa.PlayerJpaRepository;
+import ar.edu.utn.frc.tup.lciii.services.MatchService;
 import ar.edu.utn.frc.tup.lciii.services.PlayerService;
 import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -17,6 +20,9 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Autowired
     private PlayerJpaRepository playerJpaRepository;
+
+    @Autowired
+    private MatchService matchService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -78,5 +84,10 @@ public class PlayerServiceImpl implements PlayerService {
         else {
             throw new EntityNotFoundException("Some parameters are incorrect.");
         }
+    }
+
+    @Override
+    public List<Match> getPlayerMatches(Long id) {
+        return matchService.getMatchesByPlayer(id);
     }
 }

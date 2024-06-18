@@ -1,6 +1,7 @@
 package ar.edu.utn.frc.tup.lciii.controllers;
 
 import ar.edu.utn.frc.tup.lciii.dtos.common.ErrorApi;
+import ar.edu.utn.frc.tup.lciii.models.Match;
 import ar.edu.utn.frc.tup.lciii.models.Player;
 import ar.edu.utn.frc.tup.lciii.services.PlayerService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -50,5 +52,11 @@ public class PlayerController {
         else{
             return ResponseEntity.ok(playerSaved);
         }
+    }
+
+    @GetMapping("/{id}/matches")
+    public ResponseEntity<List<Match>> getMatchesOfPlayer(@PathVariable Long id) {
+        List<Match> matches = playerService.getPlayerMatches(id);
+        return ResponseEntity.ok(matches);
     }
 }
