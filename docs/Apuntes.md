@@ -174,3 +174,43 @@ prueba específico para las operaciones de persistencia de datos.
 contexto de Spring Boot durante las pruebas de integración. Carga todas
 las configuraciones de la aplicación y permite acceder a los beans
 administrados por Spring en las pruebas.
+
+### @AutoConfigureMockMvc
+> Esta anotación se utiliza en las pruebas de
+integración para configurar automáticamente el objeto MockMvc, que
+proporciona un entorno de prueba completo para los controladores web.
+
+### @WebMvcTest
+> Esta anotación se utiliza para las pruebas de integración
+de controladores REST en aplicaciones web. Configura un entorno de
+prueba específico para probar los controladores y las solicitudes HTTP.
+
+### @MockBean
+> Esta anotación se utiliza para crear un objeto simulado
+(mock) de una dependencia de Spring. Permite simular el comportamiento
+de los componentes externos y controlar sus respuestas durante las
+pruebas unitarias.
+
+
+# Spring Boot API - P21: SpringDoc Annotations
+
+## Anotaciones:
+
+### @Operation
+> Permite añadir un título a modo de resumen a los endpoints y una descripción
+
+### @ApiResponses
+
+
+#  Spring Boot API - P22: Login Inheritance With Jackson
+
+## Anotaciones
+
+### @JsonTypeInfo
+> (use = JsonTypeInfo.Id.NAME, property = "identity_type", include = JsonTypeInfo.As.EXISTING_PROPERTY, visible = true)
+
+### @JsonSubTypes
+> @JsonSubTypes.Type(value = UserNameIdentity.class, name = "USERNAME")
+
+### @JsonProperty
+> @JsonProperty("identity_type")
