@@ -60,3 +60,79 @@
 ### @Repository
 > Esta anotación se utiliza para marcar una clase como un componente de accesi a datis, Indica que la clase se encarga
 > de interactuar con una case de datos o un origen de datos.
+
+
+# Spring Boot API - P06: Player Controller
+
+## 1. Creo mi controlador con los Endpoints que necesito
+> Los endpoints retornan ResponseEntity<T> que es un objeto con todo lo necesario para un objeto de respuesta.
+
+## Anotaciones
+### @PathVariable
+> Utilizada para vincular variables de una URL con los parámetros de un método en un controlador. Permite acceder a
+> valores dinámicos en la URL de una solicitud.
+
+### @AutoWired
+> Utilizada para realizar la inyeccion de dependencias en Spring. Se aplica a campos, constructores o métodos Setter y
+> permite que Spring resuelva e inyecte las dependencias necesarias automáticamente.
+
+
+# Spring Boot API - P07: Player Service
+
+## 1. Creo el paquete config con la clase MapperConfig
+> Sirve para mapear las entidades a los modelos
+
+## 2. Creo una Interfaz Servicio
+> Creo la interfaz con en contrato que tendrán los servicios que la implementen
+
+## 3. Creo la implementación del servicio dentro del paquete service.impl
+
+## Anotaciones
+### @Configuration
+> Esta anotación se utiliza para marcar una clase de configuración en Spring. Indica que la clase contiene métodos que
+> definen la configuración de la aplicación, como la creación de beans y la configuración de componentes.
+
+### @Bean
+> Esta anotación se utiliza para marcar que un método en una clase de configuración de Spring debe ser tratado como un
+> bean y gestionado por el contenedor de Spring.
+
+### @Service
+> Esta anotación se utiliza para marcar una clase como un servicio de negocio.
+> Indica que la clase contiene la lógica de negocio de la aplicación y se utiliza para
+> separar las responsabilidades de la capa de presentación y la capa de acceso a
+> datos.
+
+
+# Spring Boot API - P09: Validations
+
+## Anotaciones:
+
+### @NotNull
+
+### @Email
+
+
+# Spring Boot API - P10: Posting Player
+
+## 1. Agrego el contrato en la interfaz.
+
+## 2. Implemento el método en el servicio.
+
+## 3. Creo el endpoint en el controlador.
+
+## Anotaciones:
+
+### @PostMapping
+> Esta anotación combina las anotaciones @RequestMapping y
+> @RequestMethod.POST. Se utiliza para mapear una solicitud HTTP POST a un
+> método específico en un controlador.
+
+### @RequestBody
+> Esta anotación se utiliza para vincular el cuerpo de una solicitud HTTP con un
+> objeto en un método de un controlador. Permite recibir y procesar datos enviados en
+> el cuerpo de la solicitud, como en una solicitud POST o PUT.
+
+### @Valid
+> Se utiliza en parámetros de métodos o argumentos de constructores para
+> activar la validación de datos según las anotaciones de validación de Spring, como
+> @NotNull, @Size, etc.

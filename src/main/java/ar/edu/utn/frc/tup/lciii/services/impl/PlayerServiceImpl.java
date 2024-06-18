@@ -25,7 +25,9 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Player savePlayer(Player player) {
+        //mapeo el player recibido a un playerEntity
         PlayerEntity playerEntity = modelMapper.map(player, PlayerEntity.class);
+        //guardo el player que se inserto
         PlayerEntity playerEntitySaved = playerJpaRepository.save(playerEntity);
         return modelMapper.map(playerEntitySaved, Player.class);
     }
