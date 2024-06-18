@@ -4,9 +4,13 @@ import ar.edu.utn.frc.tup.lciii.entities.PlayerEntity;
 import ar.edu.utn.frc.tup.lciii.models.Player;
 import ar.edu.utn.frc.tup.lciii.repositories.jpa.PlayerJpaRepository;
 import ar.edu.utn.frc.tup.lciii.services.PlayerService;
+import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
@@ -20,15 +24,26 @@ public class PlayerServiceImpl implements PlayerService {
     @Override
     public Player getPlayerById(Long id) {
         PlayerEntity playerEntity = playerJpaRepository.getReferenceById(id);
+        if (Objects.isNull(playerEntity.getUserName())){
+            throw new EntityNotFoundException();
+        }
         return modelMapper.map(playerEntity, Player.class);
     }
 
     @Override
     public Player savePlayer(Player player) {
-        //mapeo el player recibido a un playerEntity
-        PlayerEntity playerEntity = modelMapper.map(player, PlayerEntity.class);
-        //guardo el player que se inserto
-        PlayerEntity playerEntitySaved = playerJpaRepository.save(playerEntity);
-        return modelMapper.map(playerEntitySaved, Player.class);
+        Optional<PlayerEntity> playerEntityOptional = playerJpaRepository.findByUserNameOrEmail(
+                player.getUserName(), player.getEmail()
+        );
+        if(playerEntityOptional.isEmpty()){
+            //mapeo el player recibido a un playerEntity
+            PlayerEntity playerEntity = modelMapper.map(player, PlayerEntity.class);
+            //guardo el player que se inserto
+            PlayerEntity playerEntitySaved = playerJpaRepository.save(playerEntity);
+            return modelMapper.map(playerEntitySaved, Player.class);
+        }
+        else {
+            return null;
+        }
     }
 }
