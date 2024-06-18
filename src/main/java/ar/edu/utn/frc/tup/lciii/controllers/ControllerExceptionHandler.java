@@ -1,4 +1,4 @@
-package ar.edu.utn.frc.tup.lciii.Controllers;
+package ar.edu.utn.frc.tup.lciii.controllers;
 
 import ar.edu.utn.frc.tup.lciii.dtos.common.ErrorApi;
 import jakarta.persistence.EntityNotFoundException;
