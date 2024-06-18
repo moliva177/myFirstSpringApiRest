@@ -160,4 +160,17 @@
 ## 2. Agrego la anotación a la propiedad
 
 
-# LCIII - Spring Boot API - P14: UserName And Email Validation
+# Spring Boot API - P18: DataJpaTest
+
+## Anotaciones:
+
+### @DataJpaTest
+> Esta anotación se utiliza para las pruebas de integración
+que involucran repositorios de Spring Data JPA. Configura un entorno de
+prueba específico para las operaciones de persistencia de datos.
+
+### @SpringBootTest
+> Esta anotación se utiliza para cargar y configurar el
+contexto de Spring Boot durante las pruebas de integración. Carga todas
+las configuraciones de la aplicación y permite acceder a los beans
+administrados por Spring en las pruebas.
