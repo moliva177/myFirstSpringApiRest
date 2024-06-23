@@ -6,6 +6,8 @@ import ar.edu.utn.frc.tup.lciii.models.Game;
 import ar.edu.utn.frc.tup.lciii.models.Match;
 import ar.edu.utn.frc.tup.lciii.models.MatchStatus;
 import ar.edu.utn.frc.tup.lciii.models.Player;
+import ar.edu.utn.frc.tup.lciii.models.rps.MatchRps;
+import ar.edu.utn.frc.tup.lciii.repositories.MatchEntityFactory;
 import ar.edu.utn.frc.tup.lciii.repositories.jpa.MatchJpaRepository;
 import ar.edu.utn.frc.tup.lciii.services.GameService;
 import ar.edu.utn.frc.tup.lciii.services.MatchFactory;
@@ -40,8 +42,8 @@ public class MatchServiceImpl implements MatchService {
         List<Match> matches = new ArrayList<>();
         Optional<List<MatchEntity>> optionalMatchEntities = matchJpaRepository.getAllByPlayer(playerId);
         if (optionalMatchEntities.isPresent()) {
-            for (MatchEntity matchEntity : optionalMatchEntities.get()) {
-                matches.add(modelMapper.map(matchEntity, MatchFactory.createMatch(matchEntity.getGame().getCode()).getClass()));
+            for (MatchEntity me : optionalMatchEntities.get()) {
+                matches.add(modelMapper.map(me, MatchRps.class));
             }
         }
         return matches;
@@ -51,13 +53,8 @@ public class MatchServiceImpl implements MatchService {
     public Match createMatch(MatchDto matchDto) {
         Player player = playerService.getPlayerById(matchDto.getPlayerId());
         Game game = gameService.getGame(matchDto.getGameId());
-        Match match = MatchFactory.createMatch(game.getCode());
-        match.setPlayer(player);
-        match.setGame(game);
-        match.setCreatedAt(LocalDateTime.now());
-        match.setStatus(MatchStatus.STARTED);
-
-        MatchEntity matchEntity = matchJpaRepository.save(modelMapper.map(match, MatchEntity.class));
+        Match match = MatchFactory.createMatch(player, game);
+        MatchEntity matchEntity = matchJpaRepository.save(modelMapper.map(match, MatchEntityFactory.getTypeOfMatch(match)));
         return modelMapper.map(matchEntity, match.getClass());
     }
 }

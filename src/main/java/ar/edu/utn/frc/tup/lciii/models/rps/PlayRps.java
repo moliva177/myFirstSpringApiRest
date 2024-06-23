@@ -13,5 +13,5 @@ public class PlayRps {
     private Long matchRpsId;
     private ShapeHand shapeHandPlayer1;
     private ShapeHand shapeHandPlayer2;
-    private Long winner;
+    private Long winnerId;
 }

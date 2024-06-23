@@ -30,3 +30,35 @@ INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, 
 VALUES (1000003, 1000000, 'ROCK', 'SCISSORS', 100);
 INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
 VALUES (1000004, 1000000, 'ROCK', 'PAPER', 1000000);
+
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000010, 1000001, 'ROCK', 'PAPER', 1000000);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000011, 1000001, 'PAPER', 'ROCK', 100);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000012, 1000001, 'PAPER', 'ROCK', 100);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000013, 1000001, 'ROCK', 'SCISSORS', 100);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000014, 1000001, 'ROCK', 'PAPER', 1000000);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000015, 1000001, 'ROCK', 'PAPER', 1000000);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000016, 1000001, 'PAPER', 'ROCK', 100);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000017, 1000001, 'PAPER', 'ROCK', 100);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000018, 1000001, 'ROCK', 'SCISSORS', 100);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000019, 1000001, 'ROCK', 'PAPER', 1000000);
+
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000020, 1000002, 'ROCK', 'PAPER', 1000000);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000021, 1000002, 'PAPER', 'ROCK', 100);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000022, 1000002, 'PAPER', 'ROCK', 100);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000023, 1000002, 'ROCK', 'SCISSORS', 100);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000024, 1000002, 'ROCK', 'PAPER', 1000000);

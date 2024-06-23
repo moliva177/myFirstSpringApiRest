@@ -17,5 +17,5 @@ public class MatchRps extends Match {
     private Integer player1Score;
     private Integer player2Score;
     private List<PlayRps> plays;
-    private Long winner;
+    private Long winnerId;
 }

@@ -18,7 +18,7 @@ public class MatchRpsEntity extends MatchEntity {
 
     private Integer numberOfPlays;
 
-    private Integer playsReminder;
+    private Integer remainderPlays;
 
     private Integer player1Score;
 
