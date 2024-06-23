@@ -17,12 +17,35 @@ class Game {
     String rules
 }
 
-class Match {
+abstract Match {
     Long id
     Game game
     Player player
     LocalDateTime createdAt
     MatchStatus status
+}
+
+class MatchRps {
+    Integer numberOfPlays
+    Integer remainderPlyas
+    Integer player1Score
+    Integer player2Score
+    List<PlayRps> plays
+    Long winnerId
+}
+
+class PlayRps {
+    Long id
+    Long matchRpsId
+    ShapeHand shapeHandPlayer1
+    ShapeHand shapeHandPlayer2
+    Long winnerId
+}
+
+enum ShapeHand {
+    ROCK
+    PAPER
+    SCISSORS
 }
 
 enum MatchStatus {
@@ -34,5 +57,8 @@ enum MatchStatus {
 MatchStatus --* Match
 Game --* Match
 Player --* Match
+Match <|-- MatchRps
+PlayRps -* MatchRps
+ShapeHand --* PlayRps
 
 @enduml

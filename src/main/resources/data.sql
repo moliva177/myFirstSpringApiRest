@@ -12,3 +12,21 @@ INSERT INTO matches(id, game_id, player_id, created_at, updated_at, status)
 VALUES (1000001, 1000000, 100, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'FINISHED');
 INSERT INTO matches(id, game_id, player_id, created_at, updated_at, status)
 VALUES (1000002, 1000000, 100, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'CANCELED');
+
+INSERT INTO matches_rps(id, number_of_plays, remainder_plays, player1score, player2score)
+VALUES (1000000, 10, 5, 3, 2);
+INSERT INTO matches_rps(id, number_of_plays, remainder_plays, player1score, player2score, winner_id)
+VALUES (1000001, 10, 0, 6, 4, 100);
+INSERT INTO matches_rps(id, number_of_plays, remainder_plays, player1score, player2score)
+VALUES (1000002, 10, 5, 3, 2);
+
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000000, 1000000, 'ROCK', 'PAPER', 1000000);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000001, 1000000, 'PAPER', 'ROCK', 100);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000002, 1000000, 'PAPER', 'ROCK', 100);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000003, 1000000, 'ROCK', 'SCISSORS', 100);
+INSERT INTO plays_rps(id, match_rps_id, shape_hand_player1, shape_hand_player2, winner_id)
+VALUES (1000004, 1000000, 'ROCK', 'PAPER', 1000000);

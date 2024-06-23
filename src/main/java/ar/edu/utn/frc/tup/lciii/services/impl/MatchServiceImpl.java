@@ -8,6 +8,7 @@ import ar.edu.utn.frc.tup.lciii.models.MatchStatus;
 import ar.edu.utn.frc.tup.lciii.models.Player;
 import ar.edu.utn.frc.tup.lciii.repositories.jpa.MatchJpaRepository;
 import ar.edu.utn.frc.tup.lciii.services.GameService;
+import ar.edu.utn.frc.tup.lciii.services.MatchFactory;
 import ar.edu.utn.frc.tup.lciii.services.MatchService;
 import ar.edu.utn.frc.tup.lciii.services.PlayerService;
 import org.modelmapper.ModelMapper;
@@ -40,8 +41,7 @@ public class MatchServiceImpl implements MatchService {
         Optional<List<MatchEntity>> optionalMatchEntities = matchJpaRepository.getAllByPlayer(playerId);
         if (optionalMatchEntities.isPresent()) {
             for (MatchEntity matchEntity : optionalMatchEntities.get()) {
-                Match match = modelMapper.map(matchEntity, Match.class);
-                matches.add(match);
+                matches.add(modelMapper.map(matchEntity, MatchFactory.createMatch(matchEntity.getGame().getCode()).getClass()));
             }
         }
         return matches;
@@ -49,15 +49,15 @@ public class MatchServiceImpl implements MatchService {
 
     @Override
     public Match createMatch(MatchDto matchDto) {
-        Match match = new Match();
         Player player = playerService.getPlayerById(matchDto.getPlayerId());
         Game game = gameService.getGame(matchDto.getGameId());
+        Match match = MatchFactory.createMatch(game.getCode());
         match.setPlayer(player);
         match.setGame(game);
         match.setCreatedAt(LocalDateTime.now());
         match.setStatus(MatchStatus.STARTED);
 
         MatchEntity matchEntity = matchJpaRepository.save(modelMapper.map(match, MatchEntity.class));
-        return modelMapper.map(matchEntity, Match.class);
+        return modelMapper.map(matchEntity, match.getClass());
     }
 }
