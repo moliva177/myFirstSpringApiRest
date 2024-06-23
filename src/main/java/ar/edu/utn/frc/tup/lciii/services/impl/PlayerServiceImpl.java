@@ -22,9 +22,6 @@ public class PlayerServiceImpl implements PlayerService {
     private PlayerJpaRepository playerJpaRepository;
 
     @Autowired
-    private MatchService matchService;
-
-    @Autowired
     private ModelMapper modelMapper;
 
     @Override
@@ -84,10 +81,5 @@ public class PlayerServiceImpl implements PlayerService {
         else {
             throw new EntityNotFoundException("Some parameters are incorrect.");
         }
-    }
-
-    @Override
-    public List<Match> getPlayerMatches(Long id) {
-        return matchService.getMatchesByPlayer(id);
     }
 }

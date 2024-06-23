@@ -18,6 +18,4 @@ public interface PlayerService {
     Player getPlayerByEmailAndPassword(String email, String password);
 
     Player getPlayerByUserNameOrEmailAndPassword(String identity, String password);
-
-    List<Match> getPlayerMatches(Long id);
 }

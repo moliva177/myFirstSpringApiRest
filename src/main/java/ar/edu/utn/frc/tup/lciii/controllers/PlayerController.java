@@ -3,6 +3,7 @@ package ar.edu.utn.frc.tup.lciii.controllers;
 import ar.edu.utn.frc.tup.lciii.dtos.common.ErrorApi;
 import ar.edu.utn.frc.tup.lciii.models.Match;
 import ar.edu.utn.frc.tup.lciii.models.Player;
+import ar.edu.utn.frc.tup.lciii.services.MatchService;
 import ar.edu.utn.frc.tup.lciii.services.PlayerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -25,6 +26,9 @@ public class PlayerController {
 
     @Autowired
     private PlayerService playerService;
+
+    @Autowired
+    private MatchService matchService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Player> getById(@PathVariable Long id) {
@@ -56,7 +60,7 @@ public class PlayerController {
 
     @GetMapping("/{id}/matches")
     public ResponseEntity<List<Match>> getMatchesOfPlayer(@PathVariable Long id) {
-        List<Match> matches = playerService.getPlayerMatches(id);
+        List<Match> matches = matchService.getMatchesByPlayer(id);
         return ResponseEntity.ok(matches);
     }
 }
