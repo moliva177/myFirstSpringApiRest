@@ -25,7 +25,7 @@ public class MatchRpsEntity extends MatchEntity {
     private Integer player2Score;
 
     @OneToMany(mappedBy = "matchRps")
-    private List<PlaysRpsEntity> plays;
+    private List<PlayRpsEntity> plays;
 
     @ManyToOne
     @JoinColumn(name = "winner_id")

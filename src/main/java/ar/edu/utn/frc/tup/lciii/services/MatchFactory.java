@@ -42,7 +42,7 @@ public class MatchFactory {
 
     private static Match getBasicMatch(Player player, Game game){
         Match match = getMatchInstance(game.getCode());
-        match.setPlayer(player);
+        match.setPlayer1(player);
         match.setGame(game);
         match.setCreatedAt(LocalDateTime.now());
         match.setStatus(MatchStatus.STARTED);

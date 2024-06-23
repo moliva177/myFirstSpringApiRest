@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PlaysRpsEntity {
+public class PlayRpsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
